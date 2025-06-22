@@ -13,6 +13,7 @@ import com.service.transfer.exceptions.InsufficientBalanceException;
 import com.service.transfer.exceptions.SameIdentityException;
 import com.service.transfer.repository.AccountRepository;
 import com.service.transfer.repository.TransactionInfoRepository;
+import com.service.transfer.service.impl.FundTransferServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,7 +42,7 @@ public class FundTransferServiceTest {
     private TransactionInfoRepository transactionInfoRepository;
 
     @InjectMocks
-    private FundTransferService fundTransferService;
+    private FundTransferServiceImpl fundTransferService;
 
 
     private Account fromAccount;

@@ -154,6 +154,18 @@ public class AccountOwnerRepositoryTest {
                 });
     }
     @Test
+    void accountOwnerWithInvalidPhoneNumber() {
+        AccountOwner owner = createValidOwner();
+        owner.setPhoneNumber("215520241212674575421255346346");
+        assertThatThrownBy(() -> accountOwnerRepository.saveAndFlush(owner))
+                .isInstanceOfAny(ConstraintViolationException.class, DataIntegrityViolationException.class, PropertyValueException.class, ConstraintDefinitionException.class)
+                .satisfies(ex -> {
+                    String msg = ex.getMessage();
+                    assertThat(msg).containsAnyOf("phone_number", "phoneNumber");
+                });
+
+    }
+    @Test
     void accountOwnerWithInvalidIdentificationId() {
         AccountOwner owner = createValidOwner();
         owner.setIdentificationId(generateStringByLength(26));

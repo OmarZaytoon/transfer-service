@@ -1,5 +1,6 @@
 package com.service.transfer.entity.account;
 
+import com.service.transfer.annotation.ValidIban;
 import com.service.transfer.entity.base.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
@@ -32,6 +33,7 @@ public class Account extends BaseEntity {
     @Column(name = "currencyIsoCode",nullable = false,length = 3)
     private String currency;
 
+    @ValidIban
     @Column(name = "iban_number",length = 34,nullable = false, unique = true)
     private String ibanNumber;
 

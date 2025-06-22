@@ -1,7 +1,8 @@
 package com.service.transfer.entity.account;
 
-import com.service.transfer.entity.enums.IdentificationType;
+import com.service.transfer.annotation.ValidPhoneNumber;
 import com.service.transfer.entity.base.BaseEntity;
+import com.service.transfer.entity.enums.IdentificationType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,6 +20,7 @@ public class AccountOwner extends BaseEntity {
     @Column(name = "last_name",length = 100)
     private String lastName;
 
+    @ValidPhoneNumber
     @Column(name = "phone_number")
     private String phoneNumber;
 
