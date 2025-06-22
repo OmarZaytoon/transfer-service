@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:15
+    container_name: transfer-db
+    environment:
+      POSTGRES_USER: transferuser
+      POSTGRES_PASSWORD: pass123
+      POSTGRES_DB: transferdb
+    ports:
+      - "6543:5432" # host:container
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: transfer-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/transferdb
+      SPRING_DATASOURCE_USERNAME: transferuser
+      SPRING_DATASOURCE_PASSWORD: pass123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    volumes:
+      - ./logs:/app/logs
+
+volumes:
+  pgdata:
