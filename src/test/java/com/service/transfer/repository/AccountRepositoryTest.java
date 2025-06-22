@@ -103,7 +103,7 @@ public class AccountRepositoryTest {
         Account account=createAccount(createOwner(),null,"131000302");
         assertThatThrownBy(() -> accountRepository.save(account))
                 .isInstanceOfAny(ConstraintViolationException.class, DataIntegrityViolationException.class,ConstraintViolationException.class)
-                .hasMessageContaining("ibanNumber");
+                .hasMessageContaining("iban_number");
     }
     @Test
     void accountWithNullAccountNumber(){

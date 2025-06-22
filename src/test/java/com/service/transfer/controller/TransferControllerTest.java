@@ -1,6 +1,7 @@
 package com.service.transfer.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.service.transfer.controller.impl.TransferControllerImpl;
 import com.service.transfer.dto.ResponseWrapper;
 import com.service.transfer.dto.requests.TransferByAccountNumberRequest;
 import com.service.transfer.dto.requests.TransferByIbanRequest;
@@ -8,9 +9,7 @@ import com.service.transfer.dto.responses.TransferResponse;
 import com.service.transfer.service.FundTransferService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,7 +22,8 @@ import java.util.UUID;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-@WebMvcTest(controllers = TransferController.class)
+
+@WebMvcTest(controllers = TransferControllerImpl.class)
 public class TransferControllerTest {
     private final static String transactionId= System.currentTimeMillis()+"-"+UUID.randomUUID();
 

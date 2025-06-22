@@ -7,6 +7,7 @@ import com.service.transfer.dto.responses.TransferResponse;
 import org.springframework.http.ResponseEntity;
 
 public interface TransferController {
+
     ResponseEntity<ResponseWrapper<TransferResponse>> transferByAccountNumber(TransferByAccountNumberRequest request);
     ResponseEntity<ResponseWrapper<TransferResponse>> transferByIban(TransferByIbanRequest request);
 }
