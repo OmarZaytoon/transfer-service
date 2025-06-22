@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: transfer-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/test_transfer
+    username: postgres
+    password: Demo@123$
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      jakarta.persistence.validation.mode: auto
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: false
+        use_sql_comments: false
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: /app/logs/transfer-app.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
